@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: invalid-busybox
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: invalid-busybox
+  random:
+    field: true
+  template:
+    metadata:
+      labels:
+        app: invalid-busybox
+    spec:
+      containers:
+      - name: busybox
+        image: busybox
+        command: ["sleep", "3600"]
